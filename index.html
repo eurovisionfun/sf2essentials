@@ -203,8 +203,8 @@ html,body{
 
     <!-- COUNTDOWN -->
     <div class="cd-card">
-      <div class="cd-label"><span class="cd-dot"></span>2ος Ημιτελικός</div>
-      <div class="cd-date">Πέμπτη 14 Μαΐου 2026 · 22:00 ώρα Ελλάδας</div>
+      <div class="cd-label"><span class="cd-dot"></span>2nd Semi-Final</div>
+      <div class="cd-date">Thursday 14 May 2026 · 22:00 Greece time</div>
       <div id="cd-wrap"></div>
     </div>
 
@@ -216,7 +216,7 @@ html,body{
         <span class="ess-btn-icon">🏆</span>
         <span class="ess-btn-text">
           <span class="ess-btn-title">Scorecards SF2</span>
-          <span class="ess-btn-sub">Βαθμολόγησε τις χώρες του 2ου Ημιτελικού</span>
+          <span class="ess-btn-sub">Score the countries of the 2nd Semi-Final</span>
         </span>
         <span class="ess-btn-arrow">→</span>
       </a>
@@ -225,7 +225,7 @@ html,body{
         <span class="ess-btn-icon">📊</span>
         <span class="ess-btn-text">
           <span class="ess-btn-title">Qualifier Predictions</span>
-          <span class="ess-btn-sub">Πρόβλεψε ποιος περνά στον τελικό</span>
+          <span class="ess-btn-sub">Predict who qualifies for the Grand Final</span>
         </span>
         <span class="ess-btn-arrow">→</span>
       </a>
@@ -233,7 +233,7 @@ html,body{
     </div>
 
     <!-- SOCIAL -->
-    <div class="section-label">🌐 Βρες μας παντού</div>
+    <div class="section-label">🌐 Find us everywhere</div>
     <div class="social-links">
 
       <!-- Site -->
@@ -241,7 +241,7 @@ html,body{
         <div class="soc-icon">🌍</div>
         <div class="soc-info">
           <span class="soc-name">Eurovisionfun.com</span>
-          <span class="soc-handle">Άρθρα, αναλύσεις &amp; νέα</span>
+          <span class="soc-handle">Articles, analysis &amp; news</span>
         </div>
         <span class="soc-arrow">→</span>
       </a>
@@ -330,13 +330,13 @@ function renderCD(){
     const sc = s%60;
     if(!document.getElementById('cd-d')){
       wrap.innerHTML=`<div class="cd-units">
-        <div class="cd-unit"><span class="cd-num" id="cd-d">${pad(d)}</span><div class="cd-unit-label">Μέρες</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-d">${pad(d)}</span><div class="cd-unit-label">Days</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><span class="cd-num" id="cd-h">${pad(h)}</span><div class="cd-unit-label">Ώρες</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">${pad(h)}</span><div class="cd-unit-label">Hours</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><span class="cd-num" id="cd-m">${pad(m)}</span><div class="cd-unit-label">Λεπτά</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">${pad(m)}</span><div class="cd-unit-label">Mins</div></div>
         <div class="cd-sep">:</div>
-        <div class="cd-unit"><span class="cd-num" id="cd-s">${pad(sc)}</span><div class="cd-unit-label">Δευτ.</div></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">${pad(sc)}</span><div class="cd-unit-label">Secs</div></div>
       </div>`;
     } else {
       document.getElementById('cd-d').textContent=pad(d);
@@ -345,9 +345,9 @@ function renderCD(){
       document.getElementById('cd-s').textContent=pad(sc);
     }
   } else if(diff > -10800000){
-    wrap.innerHTML='<div class="cd-live">🎤 LIVE ΤΩΡΑ!</div>';
+    wrap.innerHTML='<div class="cd-live">🎤 LIVE NOW!</div>';
   } else {
-    wrap.innerHTML='<div class="cd-done">Ο 2ος Ημιτελικός έχει ολοκληρωθεί</div>';
+    wrap.innerHTML='<div class="cd-done">The 2nd Semi-Final has ended</div>';
   }
 }
 
