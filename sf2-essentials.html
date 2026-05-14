@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SF2 Essentials · EuroVisionFun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  width:100%;min-height:100%;
+  background:#0d001f;
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+.app{
+  width:100%;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;
+  background:radial-gradient(ellipse 120% 70% at 50% 0%,#3a00a0 0%,#1a0050 45%,#0d001f 100%);
+  position:relative;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0) 0;
+}
+.inner{
+  display:flex;flex-direction:column;align-items:center;
+  width:100%;max-width:400px;
+  padding:28px 20px 36px;
+  gap:0;
+}
+
+/* ── LOGOS ── */
+.logo-stack{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px;}
+.evf-logo{height:44px;width:auto;max-width:190px;object-fit:contain;}
+.esc-logo{height:50px;width:auto;max-width:130px;object-fit:contain;}
+
+/* ── TITLE ── */
+.title-block{text-align:center;margin-bottom:20px;}
+.title-top{color:rgba(255,255,255,0.45);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.title-main{color:#fff;font-size:clamp(18px,5.5vw,26px);font-weight:900;letter-spacing:2px;text-transform:uppercase;line-height:1.15;}
+.title-sub{
+  display:inline-block;
+  margin-top:10px;
+  background:linear-gradient(90deg,#ff03ff,#8800ff);
+  border-radius:50px;
+  padding:5px 18px;
+  font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;
+}
+
+/* ── COUNTDOWN CARD ── */
+.cd-card{
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;
+  padding:13px 16px;
+  margin-bottom:16px;
+}
+.cd-label{
+  font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:#a855f7;
+  display:flex;align-items:center;gap:7px;
+  margin-bottom:6px;
+}
+.cd-dot{width:6px;height:6px;border-radius:50%;background:#ff03ff;animation:blink 1.4s ease-in-out infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+.cd-date{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);margin-bottom:10px;letter-spacing:0.3px;}
+.cd-units{display:flex;gap:6px;align-items:center;}
+.cd-unit{text-align:center;flex:1;}
+.cd-num{
+  font-size:clamp(22px,6vw,30px);font-weight:900;color:#fff;line-height:1;
+  letter-spacing:-1px;
+  background:rgba(255,255,255,0.07);
+  border-radius:8px;padding:6px 4px;
+  display:block;
+}
+.cd-unit-label{font-size:8px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.cd-sep{font-size:22px;font-weight:900;color:rgba(255,255,255,0.3);margin-bottom:14px;flex-shrink:0;}
+.cd-live{
+  font-size:12px;font-weight:800;color:#ff03ff;letter-spacing:1px;
+  text-transform:uppercase;text-align:center;padding:9px;
+  background:rgba(255,3,255,0.1);border-radius:8px;
+  animation:blink 1s ease-in-out infinite;
+}
+.cd-done{font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-align:center;padding:8px;letter-spacing:0.5px;}
+
+/* ── SECTION LABEL ── */
+.section-label{
+  width:100%;
+  font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);
+  margin:18px 0 8px 2px;
+}
+
+/* ── ESSENTIAL LINKS (big) ── */
+.essential-links{display:flex;flex-direction:column;gap:10px;width:100%;}
+
+.ess-btn{
+  display:flex;align-items:center;gap:14px;
+  padding:15px 18px;
+  border-radius:50px;
+  border:none;cursor:pointer;
+  text-decoration:none;
+  font-family:inherit;font-weight:800;font-size:12px;letter-spacing:1px;
+  text-transform:uppercase;
+  transition:opacity 0.2s ease,transform 0.15s ease;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  color:#fff;
+}
+.ess-btn:active{opacity:0.72;transform:scale(0.98);}
+.ess-btn-1{background:linear-gradient(90deg,#ff03ff,#8800ff);}
+.ess-btn-2{background:linear-gradient(90deg,#8800ff,#ff03ff);}
+
+.ess-btn-icon{font-size:18px;flex-shrink:0;}
+.ess-btn-text{flex:1;text-align:left;line-height:1.3;}
+.ess-btn-title{display:block;font-size:12px;font-weight:800;letter-spacing:1px;}
+.ess-btn-sub{display:block;font-size:9px;font-weight:600;letter-spacing:0.5px;opacity:0.7;margin-top:2px;text-transform:none;}
+.ess-btn-arrow{font-size:16px;opacity:0.7;flex-shrink:0;}
+
+/* ── SOCIAL LINKS (cards) ── */
+.social-links{display:flex;flex-direction:column;gap:8px;width:100%;}
+
+.soc-card{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;
+  border-radius:14px;
+  text-decoration:none;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  transition:background 0.2s ease,border-color 0.2s ease,transform 0.15s ease;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  color:#fff;
+}
+.soc-card:active{transform:scale(0.98);background:rgba(255,255,255,0.08);}
+.soc-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,3,255,0.25);}
+
+.soc-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+  background:rgba(255,255,255,0.07);
+}
+.soc-info{flex:1;min-width:0;}
+.soc-name{display:block;font-size:12px;font-weight:800;letter-spacing:0.5px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.soc-handle{display:block;font-size:10px;font-weight:600;color:rgba(255,255,255,0.45);margin-top:2px;letter-spacing:0.2px;}
+.soc-arrow{font-size:14px;color:rgba(255,255,255,0.3);flex-shrink:0;}
+
+/* ── STREAMS BADGE ── */
+.streams-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(255,3,255,0.12);
+  border:1px solid rgba(255,3,255,0.28);
+  border-radius:20px;
+  padding:3px 9px;
+  font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  color:#d070ff;
+  flex-shrink:0;
+  white-space:nowrap;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+  margin:4px 0;
+}
+
+/* ── FOOTER ── */
+.footer{
+  margin-top:28px;
+  color:rgba(255,255,255,0.2);font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;text-align:center;
+  line-height:1.9;
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding-top:18px;width:100%;
+}
+.footer a{color:#ff03ff;text-decoration:none;font-weight:800;}
+
+@media(min-width:480px){
+  .ess-btn-title{font-size:13px;}
+  .ess-btn-sub{font-size:10px;}
+  .soc-name{font-size:13px;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="inner">
+
+    <!-- LOGOS -->
+    <div class="logo-stack">
+      <img src="https://i.imgur.com/CVmtmbz.png" class="evf-logo" alt="EuroVisionFun" onerror="this.style.visibility='hidden'">
+      <img src="https://i.imgur.com/I0l4jby.png" class="esc-logo" alt="Eurovision Song Contest Vienna 2026" onerror="this.style.visibility='hidden'">
+    </div>
+
+    <!-- TITLE -->
+    <div class="title-block">
+      <div class="title-top">Eurovision 2026 · Vienna</div>
+      <div class="title-main">Second Semi-Final<br>Essentials</div>
+      <span class="title-sub">Thursday 14 May 2026</span>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="cd-card">
+      <div class="cd-label"><span class="cd-dot"></span>2ος Ημιτελικός</div>
+      <div class="cd-date">Πέμπτη 14 Μαΐου 2026 · 22:00 ώρα Ελλάδας</div>
+      <div id="cd-wrap"></div>
+    </div>
+
+    <!-- ESSENTIAL TOOLS -->
+    <div class="section-label">🗂 Tools &amp; Platforms</div>
+    <div class="essential-links">
+
+      <a class="ess-btn ess-btn-1" href="https://eurovisionfun.com/2026/05/eurovision-2025-%CE%BF%CE%B9-scorecards-%CF%84%CE%BF%CF%85-eurovisionfun-%CE%B3%CE%B9%CE%B1-%CF%84%CE%BF%CF%85%CF%82-%CE%B4%CF%8D%CE%BF-%CE%B7%CE%BC%CE%B9%CF%84%CE%B5%CE%BB%CE%B9%CE%BA%CE%BF%CF%8D-2/" target="_blank">
+        <span class="ess-btn-icon">🏆</span>
+        <span class="ess-btn-text">
+          <span class="ess-btn-title">Scorecards SF2</span>
+          <span class="ess-btn-sub">Βαθμολόγησε τις χώρες του 2ου Ημιτελικού</span>
+        </span>
+        <span class="ess-btn-arrow">→</span>
+      </a>
+
+      <a class="ess-btn ess-btn-2" href="https://eurovisionfun.github.io/Qualifier-Predictions/" target="_blank">
+        <span class="ess-btn-icon">📊</span>
+        <span class="ess-btn-text">
+          <span class="ess-btn-title">Qualifier Predictions</span>
+          <span class="ess-btn-sub">Πρόβλεψε ποιος περνά στον τελικό</span>
+        </span>
+        <span class="ess-btn-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="section-label">🌐 Βρες μας παντού</div>
+    <div class="social-links">
+
+      <!-- Site -->
+      <a class="soc-card" href="https://eurovisionfun.com/" target="_blank">
+        <div class="soc-icon">🌍</div>
+        <div class="soc-info">
+          <span class="soc-name">Eurovisionfun.com</span>
+          <span class="soc-handle">Άρθρα, αναλύσεις &amp; νέα</span>
+        </div>
+        <span class="soc-arrow">→</span>
+      </a>
+
+      <div class="divider"></div>
+
+      <!-- TikTok -->
+      <a class="soc-card" href="https://www.tiktok.com/@eurovisionfun" target="_blank">
+        <div class="soc-icon">🎵</div>
+        <div class="soc-info">
+          <span class="soc-name">TikTok</span>
+          <span class="soc-handle">@eurovisionfun</span>
+        </div>
+        <span class="streams-badge">🎤 Livestreams</span>
+      </a>
+
+      <!-- YouTube -->
+      <a class="soc-card" href="https://www.youtube.com/@eurovisionfun_" target="_blank">
+        <div class="soc-icon">▶️</div>
+        <div class="soc-info">
+          <span class="soc-name">YouTube</span>
+          <span class="soc-handle">@eurovisionfun_</span>
+        </div>
+        <span class="streams-badge">🎤 Livestreams</span>
+      </a>
+
+      <!-- Instagram -->
+      <a class="soc-card" href="https://www.instagram.com/eurovisionfn/" target="_blank">
+        <div class="soc-icon">📸</div>
+        <div class="soc-info">
+          <span class="soc-name">Instagram</span>
+          <span class="soc-handle">@eurovisionfn</span>
+        </div>
+        <span class="soc-arrow">→</span>
+      </a>
+
+      <div class="divider"></div>
+
+      <!-- X -->
+      <a class="soc-card" href="https://x.com/eurovisionfn/" target="_blank">
+        <div class="soc-icon" style="font-weight:900;font-size:16px;color:#fff;">✕</div>
+        <div class="soc-info">
+          <span class="soc-name">X / Twitter</span>
+          <span class="soc-handle">@eurovisionfn</span>
+        </div>
+        <span class="soc-arrow">→</span>
+      </a>
+
+      <!-- Facebook -->
+      <a class="soc-card" href="https://www.facebook.com/eurovisionfun" target="_blank">
+        <div class="soc-icon">📘</div>
+        <div class="soc-info">
+          <span class="soc-name">Facebook</span>
+          <span class="soc-handle">EurovisionFun</span>
+        </div>
+        <span class="soc-arrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Stay updated &amp; share your predictions<br>
+      <a href="https://eurovisionfun.com" target="_blank">Eurovisionfun.com</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// 14 May 2026 22:00 Athens time (EEST = UTC+3)
+const SF2 = new Date('2026-05-14T22:00:00+03:00');
+
+function pad(n){return String(n).padStart(2,'0');}
+
+function renderCD(){
+  const wrap = document.getElementById('cd-wrap');
+  if(!wrap) return;
+  const diff = SF2 - new Date();
+
+  if(diff > 0){
+    const s = Math.floor(diff/1000);
+    const d = Math.floor(s/86400);
+    const h = Math.floor((s%86400)/3600);
+    const m = Math.floor((s%3600)/60);
+    const sc = s%60;
+    if(!document.getElementById('cd-d')){
+      wrap.innerHTML=`<div class="cd-units">
+        <div class="cd-unit"><span class="cd-num" id="cd-d">${pad(d)}</span><div class="cd-unit-label">Μέρες</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-h">${pad(h)}</span><div class="cd-unit-label">Ώρες</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-m">${pad(m)}</span><div class="cd-unit-label">Λεπτά</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-s">${pad(sc)}</span><div class="cd-unit-label">Δευτ.</div></div>
+      </div>`;
+    } else {
+      document.getElementById('cd-d').textContent=pad(d);
+      document.getElementById('cd-h').textContent=pad(h);
+      document.getElementById('cd-m').textContent=pad(m);
+      document.getElementById('cd-s').textContent=pad(sc);
+    }
+  } else if(diff > -10800000){
+    wrap.innerHTML='<div class="cd-live">🎤 LIVE ΤΩΡΑ!</div>';
+  } else {
+    wrap.innerHTML='<div class="cd-done">Ο 2ος Ημιτελικός έχει ολοκληρωθεί</div>';
+  }
+}
+
+renderCD();
+setInterval(renderCD, 1000);
+</script>
+</body>
+</html>
